@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admission Form 2025-26 — Sunrise Educational Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1D51;
+  --navy-light: #162766;
+  --gold: #F5C518;
+  --gold-dark: #D4A90A;
+  --red: #D62828;
+  --white: #fff;
+  --gray: #F4F6FB;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --success: #16a34a;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'DM Sans',sans-serif; background:var(--gray); color:#1a1a2e; min-height:100vh; }
+
+/* TOP BAR */
+.topbar {
+  background:linear-gradient(90deg, var(--navy), var(--navy-light));
+  border-bottom:3px solid var(--gold);
+  padding:0 5%;
+  height:68px;
+  display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; z-index:100;
+  box-shadow:0 4px 20px rgba(11,29,81,0.3);
+}
+.logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.logo-sun { width:42px; height:42px; background:linear-gradient(135deg,var(--gold),#FF9500); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; box-shadow:0 0 14px rgba(245,197,24,0.5); animation:glow 3s ease-in-out infinite; }
+@keyframes glow { 0%,100%{box-shadow:0 0 14px rgba(245,197,24,0.4)} 50%{box-shadow:0 0 26px rgba(245,197,24,0.8)} }
+.logo-text span:first-child { display:block; font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--gold); }
+.logo-text span:last-child { display:block; font-size:9px; font-weight:500; color:rgba(255,255,255,0.55); letter-spacing:2px; text-transform:uppercase; }
+.back-btn { display:flex; align-items:center; gap:8px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:13px; font-weight:500; transition:color 0.2s; }
+.back-btn:hover { color:var(--gold); }
+.back-btn span { font-size:18px; }
+
+/* HERO STRIP */
+.hero-strip {
+  background:linear-gradient(135deg, var(--navy) 0%, #1e3c9a 100%);
+  padding:48px 5%;
+  text-align:center;
+  position:relative; overflow:hidden;
+}
+.hero-strip::before { content:''; position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:500px; height:500px; background:radial-gradient(circle,rgba(245,197,24,0.1) 0%,transparent 70%); border-radius:50%; }
+.hero-strip .badge { display:inline-flex; align-items:center; gap:8px; background:rgba(245,197,24,0.15); border:1px solid rgba(245,197,24,0.3); color:var(--gold); font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:7px 16px; border-radius:100px; margin-bottom:16px; }
+.hero-strip h1 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,44px); font-weight:900; color:white; margin-bottom:10px; }
+.hero-strip h1 span { color:var(--gold); }
+.hero-strip p { font-size:14px; color:rgba(255,255,255,0.6); max-width:480px; margin:0 auto; line-height:1.7; }
+.steps-row { display:flex; justify-content:center; align-items:center; gap:0; margin-top:32px; flex-wrap:wrap; }
+.step-pill { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(245,197,24,0.2); border-radius:100px; padding:8px 16px; font-size:12px; color:rgba(255,255,255,0.7); font-weight:500; }
+.step-pill.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.step-pill .num { width:22px; height:22px; background:rgba(255,255,255,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; }
+.step-pill.active .num { background:var(--navy); color:var(--gold); }
+.step-arrow { font-size:16px; color:rgba(245,197,24,0.3); padding:0 8px; }
+
+/* MAIN LAYOUT */
+.page-body { max-width:960px; margin:0 auto; padding:40px 5% 60px; }
+
+/* FORM CARD */
+.form-card { background:white; border-radius:20px; box-shadow:0 8px 40px rgba(0,0,0,0.08); overflow:hidden; }
+.form-section { padding:36px 40px; border-bottom:1px solid var(--border); }
+.form-section:last-child { border-bottom:none; }
+.section-head { display:flex; align-items:center; gap:14px; margin-bottom:28px; }
+.section-icon { width:44px; height:44px; background:linear-gradient(135deg,var(--navy),var(--navy-light)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+.section-head h2 { font-size:18px; font-weight:700; color:var(--navy); }
+.section-head p { font-size:12px; color:var(--muted); margin-top:2px; }
+
+/* FIELDS */
+.field-grid { display:grid; gap:20px; }
+.field-grid.cols-2 { grid-template-columns:1fr 1fr; }
+.field-grid.cols-3 { grid-template-columns:1fr 1fr 1fr; }
+.field-group { display:flex; flex-direction:column; gap:6px; }
+.field-group.span-2 { grid-column:span 2; }
+.field-group label { font-size:11.5px; font-weight:700; color:var(--navy); letter-spacing:0.5px; text-transform:uppercase; }
+.field-group label .req { color:var(--red); margin-left:2px; }
+.field-group input,
+.field-group select,
+.field-group textarea {
+  padding:13px 16px;
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  color:#1a1a2e;
+  background:white;
+  outline:none;
+  transition:all 0.25s;
+  width:100%;
+}
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+  border-color:var(--navy);
+  box-shadow:0 0 0 3px rgba(11,29,81,0.08);
+}
+.field-group input.error,
+.field-group select.error { border-color:var(--red); }
+.field-group textarea { resize:vertical; min-height:80px; }
+.field-group select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; }
+.field-hint { font-size:11px; color:var(--muted); margin-top:4px; }
+.error-msg { font-size:11px; color:var(--red); margin-top:4px; display:none; }
+
+/* RADIO / CHECKBOX */
+.radio-group, .check-group { display:flex; gap:16px; flex-wrap:wrap; margin-top:4px; }
+.radio-item, .check-item { display:flex; align-items:center; gap:8px; cursor:pointer; }
+.radio-item input, .check-item input { width:16px; height:16px; accent-color:var(--navy); cursor:pointer; }
+.radio-item span, .check-item span { font-size:13.5px; color:#1a1a2e; font-weight:500; }
+
+/* PHOTO UPLOAD */
+.photo-upload-area {
+  border:2px dashed var(--border);
+  border-radius:12px;
+  padding:24px;
+  text-align:center;
+  cursor:pointer;
+  transition:all 0.3s;
+  background:var(--gray);
+  position:relative;
+}
+.photo-upload-area:hover { border-color:var(--navy); background:#eef1fb; }
+.photo-upload-area input { position:absolute; inset:0; opacity:0; cursor:pointer; }
+.photo-upload-area .upload-icon { font-size:32px; margin-bottom:8px; }
+.photo-upload-area p { font-size:13px; color:var(--muted); }
+.photo-upload-area strong { color:var(--navy); }
+
+/* DECLARATION */
+.declaration-box {
+  background:#FFF9E6;
+  border:1.5px solid rgba(245,197,24,0.4);
+  border-radius:12px;
+  padding:20px;
+  font-size:13px;
+  color:#5a4700;
+  line-height:1.8;
+}
+.declaration-check { display:flex; align-items:flex-start; gap:12px; margin-top:16px; cursor:pointer; }
+.declaration-check input { width:18px; height:18px; margin-top:2px; accent-color:var(--navy); cursor:pointer; flex-shrink:0; }
+.declaration-check span { font-size:13px; color:var(--navy); font-weight:500; line-height:1.6; }
+
+/* SUBMIT AREA */
+.submit-area {
+  background:linear-gradient(135deg,var(--gray),white);
+  padding:36px 40px;
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;
+}
+.submit-note { font-size:12px; color:var(--muted); line-height:1.7; max-width:400px; }
+.submit-note strong { color:var(--navy); }
+.submit-btn {
+  background:linear-gradient(135deg,var(--navy),var(--navy-light));
+  color:white;
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:18px 42px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  transition:all 0.3s;
+  box-shadow:0 6px 24px rgba(11,29,81,0.3);
+  display:flex; align-items:center; gap:10px;
+}
+.submit-btn:hover { transform:translateY(-2px); box-shadow:0 12px 36px rgba(11,29,81,0.4); }
+.submit-btn .arrow { font-size:18px; transition:transform 0.3s; }
+.submit-btn:hover .arrow { transform:translateX(4px); }
+
+/* SUCCESS PAGE */
+.success-page { display:none; text-align:center; padding:80px 40px; }
+.success-icon { font-size:72px; margin-bottom:20px; animation:bounce 0.6s ease; }
+@keyframes bounce { 0%{transform:scale(0)} 60%{transform:scale(1.2)} 100%{transform:scale(1)} }
+.success-page h2 { font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:var(--navy); margin-bottom:12px; }
+.success-page p { font-size:15px; color:var(--muted); line-height:1.8; max-width:480px; margin:0 auto 32px; }
+.success-ref { display:inline-block; background:var(--gray); border:1px solid var(--border); border-radius:10px; padding:16px 28px; font-size:13px; color:var(--navy); font-weight:600; margin-bottom:32px; }
+.success-ref span { color:var(--gold-dark); font-size:18px; font-weight:700; display:block; margin-top:4px; }
+.success-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btn-outline { border:2px solid var(--navy); color:var(--navy); padding:13px 28px; border-radius:8px; font-weight:700; font-size:13px; letter-spacing:1px; text-transform:uppercase; text-decoration:none; transition:all 0.3s; }
+.btn-outline:hover { background:var(--navy); color:white; }
+.btn-gold { background:var(--gold); color:var(--navy); padding:13px 28px; border-radius:8px; font-weight:700; font-size:13px; letter-spacing:1px; text-transform:uppercase; text-decoration:none; transition:all 0.3s; }
+.btn-gold:hover { background:var(--gold-dark); }
+
+/* SIDEBAR INFO */
+.info-sidebar { margin-top:28px; display:flex; flex-direction:column; gap:16px; }
+.info-card { background:white; border-radius:14px; padding:20px; box-shadow:0 4px 16px rgba(0,0,0,0.06); border-left:4px solid var(--gold); }
+.info-card h4 { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.info-card p { font-size:12px; color:var(--muted); line-height:1.7; }
+.info-card a { color:var(--navy); font-weight:600; text-decoration:none; }
+
+@media(max-width:700px) {
+  .field-grid.cols-2, .field-grid.cols-3 { grid-template-columns:1fr; }
+  .field-group.span-2 { grid-column:span 1; }
+  .form-section { padding:24px 20px; }
+  .submit-area { padding:24px 20px; flex-direction:column; align-items:stretch; }
+  .submit-btn { justify-content:center; }
+  .steps-row { gap:4px; }
+  .step-arrow { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="sunrise_website.html" class="logo">
+    <div class="logo-sun">☀️</div>
+    <div class="logo-text">
+      <span>SUNRISE</span>
+      <span>Educational Academy</span>
+    </div>
+  </a>
+  <a href="sunrise_website.html" class="back-btn"><span>←</span> Back to Website</a>
+</div>
+
+<!-- HERO STRIP -->
+<div class="hero-strip">
+  <div class="badge">✦ Session 2025 – 2026</div>
+  <h1>Student <span>Admission Form</span></h1>
+  <p>Fill in all the details carefully. Our admissions team will review your application and contact you within 48 hours.</p>
+  <div class="steps-row">
+    <div class="step-pill active"><span class="num">1</span> Personal Info</div>
+    <div class="step-arrow">→</div>
+    <div class="step-pill active"><span class="num">2</span> Academic Details</div>
+    <div class="step-arrow">→</div>
+    <div class="step-pill active"><span class="num">3</span> Parent Info</div>
+    <div class="step-arrow">→</div>
+    <div class="step-pill"><span class="num">4</span> Submit</div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="page-body">
+  <div class="form-card" id="admissionForm">
+
+    <!-- SECTION 1: Student Info -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">👦</div>
+        <div><h2>Student Information</h2><p>Basic personal details of the student applying</p></div>
+      </div>
+      <div class="field-grid cols-3">
+        <div class="field-group">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" placeholder="e.g. Rahul">
+          <span class="error-msg" id="err-firstName">First name is required</span>
+        </div>
+        <div class="field-group">
+          <label>Middle Name</label>
+          <input type="text" placeholder="e.g. Kumar">
+        </div>
+        <div class="field-group">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" id="lastName" placeholder="e.g. Sharma">
+          <span class="error-msg" id="err-lastName">Last name is required</span>
+        </div>
+      </div>
+      <div class="field-grid cols-3" style="margin-top:20px">
+        <div class="field-group">
+          <label>Date of Birth <span class="req">*</span></label>
+          <input type="date" id="dob">
+          <span class="error-msg" id="err-dob">Date of birth is required</span>
+        </div>
+        <div class="field-group">
+          <label>Gender <span class="req">*</span></label>
+          <select id="gender">
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+          <span class="error-msg" id="err-gender">Please select gender</span>
+        </div>
+        <div class="field-group">
+          <label>Nationality</label>
+          <input type="text" value="Indian" placeholder="Indian">
+        </div>
+      </div>
+      <div class="field-grid cols-3" style="margin-top:20px">
+        <div class="field-group">
+          <label>Religion</label>
+          <select>
+            <option value="">Select</option>
+            <option>Hindu</option><option>Muslim</option><option>Christian</option>
+            <option>Sikh</option><option>Buddhist</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Category <span class="req">*</span></label>
+          <select id="category">
+            <option value="">Select Category</option>
+            <option>General</option><option>OBC</option>
+            <option>SC</option><option>ST</option><option>EWS</option>
+          </select>
+          <span class="error-msg" id="err-category">Please select category</span>
+        </div>
+        <div class="field-group">
+          <label>Aadhar Number</label>
+          <input type="text" placeholder="XXXX XXXX XXXX" maxlength="14">
+        </div>
+      </div>
+      <div class="field-grid cols-2" style="margin-top:20px">
+        <div class="field-group">
+          <label>Blood Group</label>
+          <select>
+            <option value="">Select</option>
+            <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+            <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Photo Upload</label>
+          <div class="photo-upload-area">
+            <input type="file" accept="image/*" onchange="handlePhoto(this)">
+            <div class="upload-icon" id="uploadIcon">📷</div>
+            <p><strong>Click to upload</strong> student photo</p>
+            <p style="font-size:11px; margin-top:4px;">JPG or PNG, max 2MB</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: Address -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">📍</div>
+        <div><h2>Address Details</h2><p>Current residential address of the student</p></div>
+      </div>
+      <div class="field-grid cols-2">
+        <div class="field-group span-2">
+          <label>Street Address / House No. <span class="req">*</span></label>
+          <input type="text" id="address" placeholder="House No., Street, Mohalla / Colony">
+          <span class="error-msg" id="err-address">Address is required</span>
+        </div>
+        <div class="field-group">
+          <label>Village / Town / City <span class="req">*</span></label>
+          <input type="text" id="city" placeholder="e.g. Lucknow">
+          <span class="error-msg" id="err-city">City is required</span>
+        </div>
+        <div class="field-group">
+          <label>District</label>
+          <input type="text" placeholder="e.g. Lucknow">
+        </div>
+        <div class="field-group">
+          <label>State</label>
+          <input type="text" value="Uttar Pradesh" placeholder="Uttar Pradesh">
+        </div>
+        <div class="field-group">
+          <label>PIN Code <span class="req">*</span></label>
+          <input type="text" id="pin" placeholder="e.g. 226001" maxlength="6">
+          <span class="error-msg" id="err-pin">PIN code is required</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: Academic -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">📚</div>
+        <div><h2>Academic Information</h2><p>Class applying for and previous school details</p></div>
+      </div>
+      <div class="field-grid cols-3">
+        <div class="field-group">
+          <label>Class Applying For <span class="req">*</span></label>
+          <select id="classApplying" onchange="showStream(this)">
+            <option value="">Select Class</option>
+            <option>Pre KG</option><option>LKG</option><option>UKG</option>
+            <option>Class 1</option><option>Class 2</option><option>Class 3</option>
+            <option>Class 4</option><option>Class 5</option><option>Class 6</option>
+            <option>Class 7</option><option>Class 8</option><option>Class 9</option>
+            <option>Class 10</option><option>Class 11</option><option>Class 12</option>
+          </select>
+          <span class="error-msg" id="err-classApplying">Please select a class</span>
+        </div>
+        <div class="field-group" id="streamGroup" style="display:none">
+          <label>Stream (Class 11-12)</label>
+          <select>
+            <option value="">Select Stream</option>
+            <option>Science (PCM)</option><option>Science (PCB)</option>
+            <option>Commerce</option><option>Arts / Humanities</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Academic Session</label>
+          <input type="text" value="2025 – 2026" readonly style="background:#f9fafb; color:var(--muted);">
+        </div>
+      </div>
+      <div class="field-grid cols-2" style="margin-top:20px">
+        <div class="field-group">
+          <label>Previous School Name</label>
+          <input type="text" placeholder="Name of last attended school">
+        </div>
+        <div class="field-group">
+          <label>Last Class Passed</label>
+          <select>
+            <option value="">Select</option>
+            <option>Nursery / Pre KG</option><option>LKG</option><option>UKG</option>
+            <option>Class 1</option><option>Class 2</option><option>Class 3</option>
+            <option>Class 4</option><option>Class 5</option><option>Class 6</option>
+            <option>Class 7</option><option>Class 8</option><option>Class 9</option>
+            <option>Class 10</option><option>Class 11</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Percentage / Marks Obtained</label>
+          <input type="text" placeholder="e.g. 85% or 420/500">
+        </div>
+        <div class="field-group">
+          <label>Board / Medium</label>
+          <select>
+            <option value="">Select</option>
+            <option>CBSE – English</option><option>CBSE – Hindi</option>
+            <option>UP Board – Hindi</option><option>ICSE</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-grid cols-2" style="margin-top:20px">
+        <div class="field-group">
+          <label>Transport Required?</label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="transport" value="yes"><span>Yes, required</span></label>
+            <label class="radio-item"><input type="radio" name="transport" value="no" checked><span>No, self-arranged</span></label>
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Hostel Required?</label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="hostel" value="yes"><span>Yes</span></label>
+            <label class="radio-item"><input type="radio" name="hostel" value="no" checked><span>No</span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Father -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">👨‍👧</div>
+        <div><h2>Father's Information</h2><p>Details of the student's father / male guardian</p></div>
+      </div>
+      <div class="field-grid cols-2">
+        <div class="field-group">
+          <label>Father's Full Name <span class="req">*</span></label>
+          <input type="text" id="fatherName" placeholder="e.g. Ramesh Kumar Sharma">
+          <span class="error-msg" id="err-fatherName">Father's name is required</span>
+        </div>
+        <div class="field-group">
+          <label>Qualification</label>
+          <select>
+            <option value="">Select</option>
+            <option>Below 10th</option><option>10th Pass</option><option>12th Pass</option>
+            <option>Graduation</option><option>Post Graduation</option><option>Professional Degree</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Occupation</label>
+          <input type="text" placeholder="e.g. Farmer, Business, Service">
+        </div>
+        <div class="field-group">
+          <label>Annual Income</label>
+          <select>
+            <option value="">Select Range</option>
+            <option>Below ₹1 Lakh</option><option>₹1–3 Lakh</option>
+            <option>₹3–5 Lakh</option><option>₹5–10 Lakh</option><option>Above ₹10 Lakh</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Mobile Number <span class="req">*</span></label>
+          <input type="tel" id="fatherMobile" placeholder="+91 00000 00000" maxlength="13">
+          <span class="error-msg" id="err-fatherMobile">Mobile number is required</span>
+        </div>
+        <div class="field-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="father@email.com">
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: Mother -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">👩‍👧</div>
+        <div><h2>Mother's Information</h2><p>Details of the student's mother / female guardian</p></div>
+      </div>
+      <div class="field-grid cols-2">
+        <div class="field-group">
+          <label>Mother's Full Name <span class="req">*</span></label>
+          <input type="text" id="motherName" placeholder="e.g. Sunita Devi Sharma">
+          <span class="error-msg" id="err-motherName">Mother's name is required</span>
+        </div>
+        <div class="field-group">
+          <label>Qualification</label>
+          <select>
+            <option value="">Select</option>
+            <option>Below 10th</option><option>10th Pass</option><option>12th Pass</option>
+            <option>Graduation</option><option>Post Graduation</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Occupation</label>
+          <input type="text" placeholder="e.g. Homemaker, Teacher, Business">
+        </div>
+        <div class="field-group">
+          <label>Mobile Number</label>
+          <input type="tel" placeholder="+91 00000 00000" maxlength="13">
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: Emergency -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">🚨</div>
+        <div><h2>Emergency &amp; Medical</h2><p>Important health and emergency contact information</p></div>
+      </div>
+      <div class="field-grid cols-2">
+        <div class="field-group">
+          <label>Emergency Contact Name</label>
+          <input type="text" placeholder="Name of emergency contact person">
+        </div>
+        <div class="field-group">
+          <label>Emergency Contact Number</label>
+          <input type="tel" placeholder="+91 00000 00000">
+        </div>
+        <div class="field-group span-2">
+          <label>Known Medical Conditions / Allergies</label>
+          <textarea rows="2" placeholder="e.g. Asthma, peanut allergy, diabetes — or write 'None'"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 7: Declaration -->
+    <div class="form-section">
+      <div class="section-head">
+        <div class="section-icon">✍️</div>
+        <div><h2>Declaration</h2><p>Please read carefully before submitting</p></div>
+      </div>
+      <div class="declaration-box">
+        I/We hereby declare that the information provided in this application form is true and correct to the best of my/our knowledge. I/We understand that any false information may result in cancellation of admission. I/We agree to abide by the rules, regulations, and code of conduct of Sunrise Educational Academy and support the school in maintaining academic discipline.
+      </div>
+      <label class="declaration-check">
+        <input type="checkbox" id="declaration">
+        <span>I have read and accept the above declaration. I agree to the school's terms and admission policies. <span class="req">*</span></span>
+      </label>
+      <span class="error-msg" id="err-declaration" style="display:none; margin-top:8px;">You must accept the declaration to proceed.</span>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-area">
+      <div class="submit-note">
+        <strong>📋 Before Submitting:</strong><br>
+        Make sure all required fields (marked <span style="color:var(--red)">*</span>) are filled correctly. After submission, you will receive a confirmation and our team will call you within 48 hours.
+      </div>
+      <button class="submit-btn" onclick="submitForm()">
+        Submit Application <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-page" id="successPage">
+      <div class="success-icon">🎉</div>
+      <h2>Application Submitted!</h2>
+      <p>Thank you for applying to Sunrise Educational Academy. Your admission application has been received successfully. Our admissions team will review it and contact you within 48 hours.</p>
+      <div class="success-ref">
+        Your Application Reference Number<br>
+        <span id="refNum">SEA-2025-00000</span>
+      </div>
+      <p style="font-size:13px; color:var(--muted); margin-bottom:28px;">Please save this reference number for future correspondence.</p>
+      <div class="success-btns">
+        <a href="sunrise_website.html" class="btn-outline">← Back to Home</a>
+        <a href="#" onclick="window.print()" class="btn-gold">🖨️ Print Application</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR CARDS -->
+  <div class="info-sidebar">
+    <div class="info-card">
+      <h4>📞 Need Help?</h4>
+      <p>Call our admissions team:<br><a href="tel:+919876543210">+91 98765 43210</a><br>Mon–Sat, 8:00 AM – 4:00 PM</p>
+    </div>
+    <div class="info-card">
+      <h4>📅 Important Dates</h4>
+      <p>Form Submission Open: <strong>Now</strong><br>Last Date: <strong>31 May 2025</strong><br>Entrance Test: <strong>10 June 2025</strong><br>Result Declaration: <strong>15 June 2025</strong></p>
+    </div>
+    <div class="info-card">
+      <h4>📄 Documents Required</h4>
+      <p>• Birth Certificate<br>• Previous School TC<br>• Last Year Marksheet<br>• Aadhar Card (Child + Parent)<br>• 4 Passport Size Photos<br>• Caste Certificate (if applicable)</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function showStream(sel) {
+  const val = sel.value;
+  const sg = document.getElementById('streamGroup');
+  sg.style.display = (val === 'Class 11' || val === 'Class 12') ? 'block' : 'none';
+}
+
+function handlePhoto(input) {
+  if (input.files && input.files[0]) {
+    document.getElementById('uploadIcon').textContent = '✅';
+  }
+}
+
+function req(id) {
+  const el = document.getElementById(id);
+  const err = document.getElementById('err-' + id);
+  if (!el) return true;
+  const val = el.value ? el.value.trim() : '';
+  if (!val) {
+    el.classList.add('error');
+    if (err) err.style.display = 'block';
+    return false;
+  }
+  el.classList.remove('error');
+  if (err) err.style.display = 'none';
+  return true;
+}
+
+function submitForm() {
+  const checks = [
+    req('firstName'), req('lastName'), req('dob'), req('gender'),
+    req('category'), req('address'), req('city'), req('pin'),
+    req('classApplying'), req('fatherName'), req('fatherMobile'),
+    req('motherName')
+  ];
+  const dec = document.getElementById('declaration');
+  const decErr = document.getElementById('err-declaration');
+  if (!dec.checked) {
+    decErr.style.display = 'block';
+    checks.push(false);
+  } else {
+    decErr.style.display = 'none';
+  }
+
+  if (checks.includes(false)) {
+    const firstError = document.querySelector('.error, .error-msg[style*="block"]');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // Generate reference number
+  const ref = 'SEA-2025-' + String(Math.floor(Math.random() * 90000) + 10000);
+  document.getElementById('refNum').textContent = ref;
+
+  // Show success
+  const form = document.getElementById('admissionForm');
+  const sections = form.querySelectorAll('.form-section, .submit-area');
+  sections.forEach(s => s.style.display = 'none');
+  document.getElementById('successPage').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Live validation on blur
+['firstName','lastName','dob','gender','category','address','city','pin','classApplying','fatherName','fatherMobile','motherName'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('blur', () => req(id));
+});
+</script>
+</body>
+</html>
